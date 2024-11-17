@@ -44,13 +44,16 @@ public class Tugas6 extends javax.swing.JFrame {
         ));
         
         cmbLokasi.addItemListener(new ItemListener() {
+        @Override
             public void itemStateChanged(ItemEvent evt) {
-                if (evt.getStateChange() == ItemEvent.SELECTED) {
-                    String selectedCity = (String) cmbLokasi.getSelectedItem();
-                    getWeather(selectedCity);
-                }
+            if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String selectedCity = (String) cmbLokasi.getSelectedItem();
+            if (selectedCity != null && !selectedCity.isEmpty()) {
+                getWeather(selectedCity);
             }
-        });
+        }
+    }
+});
     }
 
     /**
@@ -328,11 +331,15 @@ public class Tugas6 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        String cityName = txtInputCuaca.getText();
-        if (!favoriteCities.contains(cityName)) {
-            favoriteCities.add(cityName);
-            cmbLokasi.addItem(cityName);
-        }
+       
+        String cityName = txtInputCuaca.getText().trim(); // Ambil input dari text field
+        if (!cityName.isEmpty() && !favoriteCities.contains(cityName)) {
+            favoriteCities.add(cityName); // Tambahkan ke daftar favorit
+            cmbLokasi.addItem(cityName);  // Tambahkan ke ComboBox
+        JOptionPane.showMessageDialog(this, "Kota berhasil ditambahkan ke favorit.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Kota sudah ada di daftar favorit atau input kosong.");
+    }
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
