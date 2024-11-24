@@ -66,7 +66,8 @@ Aplikasi **Perkiraan Cuaca Sederhana** adalah aplikasi berbasis Java Swing yang 
 ---
 
 ### DEMO
-
+![Demo Aplikasi](img/perkiraancuaca.gif)
+---
 
 ## Format File CSV
 File CSV yang dihasilkan atau dimuat harus memiliki format berikut:
